@@ -11,7 +11,9 @@ apt install socat -y
 apt install git -y
 apt install ufw -y
 apt install iptables -y
-apt install gcc g++ build-essential libreadline-dev zlib1g-dev linux-headers-generic libssl-dev unzip -y
+apt install build-essential automake autoconf libtool libssl-dev -y
+apt install libpthread-stubs0-dev -y
+apt install automake autoconf m4 perl -y
 
 # Setup Firewall
 ufw allow ssh  # Untuk SSH (biasanya port 22)
