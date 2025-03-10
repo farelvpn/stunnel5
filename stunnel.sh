@@ -14,6 +14,9 @@ apt install iptables -y
 apt install build-essential automake autoconf libtool libssl-dev -y
 apt install libpthread-stubs0-dev -y
 apt install automake autoconf m4 perl -y
+apt install -y autoconf automake libtool libssl-dev make gcc g++ libc6-dev pkg-config
+apt install automake -y
+apt install --reinstall libc6-dev
 
 # Setup Firewall
 ufw allow ssh  # Untuk SSH (biasanya port 22)
