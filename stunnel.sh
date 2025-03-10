@@ -17,6 +17,8 @@ apt install automake autoconf m4 perl -y
 apt install -y autoconf automake libtool libssl-dev make gcc g++ libc6-dev pkg-config
 apt install automake -y
 apt install --reinstall libc6-dev
+apt install stunnel -y
+apt install stunnel4 -y
 
 # Setup Firewall
 ufw allow ssh  # Untuk SSH (biasanya port 22)
@@ -68,7 +70,9 @@ rm -r -f stunnel
 rm -f stunnel5.zip
 
 # Setup Directory
-mkdir -p /etc/stunnel5 
+mkdir -p /etc/stunnel5
+mkdir -p /var/run/stunnel
+mkdir -p /var/run/stunnel5
 chmod 644 /etc/stunnel5
 chmod 644 /etc/xray/xray.crt
 chmod 644 /etc/xray/xray.key
