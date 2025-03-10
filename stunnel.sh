@@ -55,7 +55,9 @@ systemctl enable direct-proxy
 systemctl start direct-proxy
 
 # Setup Stunnel5
-git clone https://github.com/mtrojnar/stunnel
+wget https://raw.githubusercontent.com/farelvpn/stunnel5/main/stunnel5.zip
+unzip stunnel5.zip
+rm -f stunnel5.zip
 cd /root/stunnel
 chmod +x configure
 ./configure
@@ -68,10 +70,12 @@ rm -f stunnel5.zip
 # Setup Directory
 mkdir -p /etc/stunnel5 
 chmod 644 /etc/stunnel5
+chmod 644 /etc/xray/xray.crt
+chmod 644 /etc/xray/xray.key
 
 # Setup Comfig Stunnel
-echo -e "cert = /etc/sslku/ssl.crt
-key = /etc/sslku/ssl.key
+echo -e "cert = /etc/xray/xray.crt
+key = /etc/xray/xray.key
 
 client = no
 
@@ -91,11 +95,14 @@ connect = 127.0.0.1:1099
 accept = 777
 connect = 127.0.0.1:109" > /etc/stunnel5/stunnel5.conf
 
+# Get Service
+wget -O "/etc/init.d/stunnel5" https://raw.githubusercontent.com/farelvpn/stunnel5/main/stunnel.init
+chmod +x /etc/init.d/stunnel5
+
 # Enable STUNNEL5
 systemctl daemon-reload
-systemctl start stunnel5
-systemctl enable stunnel5
-systemctl restart stunnel5
+/etc/init.d/stunnel5 start
+/etc/init.d/stunnel5 stop
 
 clear
 
