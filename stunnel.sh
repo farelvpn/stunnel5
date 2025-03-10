@@ -96,7 +96,7 @@ accept = 777
 connect = 127.0.0.1:109" > /etc/stunnel5/stunnel5.conf
 
 # Get Service
-wget -O "/etc/init.d/stunnel5" https://raw.githubusercontent.com/farelvpn/stunnel5/main/stunnel.init
+wget -O "/etc/init.d/stunnel5" https://raw.githubusercontent.com/farelvpn/stunnel5/main/stunnel5.init
 chmod +x /etc/init.d/stunnel5
 
 # Enable STUNNEL5
